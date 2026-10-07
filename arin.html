@@ -1,0 +1,2622 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Arindi Zahrotus Sita | Portfolio</title>
+
+    <style>
+
+        /* =====================================================
+           GLOBAL
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: #21090f;
+            color: #f8eeee;
+            overflow: hidden;
+        }
+
+        :root {
+            --bg-main: #21090f;
+            --bg-secondary: #4b101c;
+            --bg-card: rgba(255,255,255,0.05);
+
+            --accent: #c9a46c;
+            --accent-soft: rgba(201,164,108,0.25);
+
+            --text-main: #f8eeee;
+            --text-soft: #d9c3c6;
+
+            --nav-bg: rgba(33,9,15,0.85);
+
+            --shadow: rgba(0,0,0,0.55);
+        }
+
+
+        /* =====================================================
+           GENTLEMAN BLACK
+        ===================================================== */
+
+        body.man-theme {
+            --bg-main: #101010;
+            --bg-secondary: #242424;
+            --bg-card: rgba(255,255,255,0.06);
+
+            --accent: #d4d4d4;
+            --accent-soft: rgba(212,212,212,0.22);
+
+            --text-main: #f5f5f5;
+            --text-soft: #c7c7c7;
+
+            --nav-bg: rgba(16,16,16,0.88);
+
+            --shadow: rgba(0,0,0,0.7);
+
+            background: var(--bg-main);
+        }
+
+
+        /* =====================================================
+           HORIZONTAL PRESENTATION
+        ===================================================== */
+
+        .slides {
+            display: flex;
+
+            width: 600vw;
+            height: 100vh;
+
+            transform: translateX(0);
+
+            transition:
+                transform 0.7s cubic-bezier(.77,0,.18,1);
+        }
+
+
+        section {
+            position: relative;
+
+            width: 100vw;
+            height: 100vh;
+
+            min-width: 100vw;
+            min-height: 100vh;
+
+            flex: 0 0 100vw;
+
+            padding:
+                110px
+                90px
+                70px;
+
+            background: var(--bg-main);
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            position: fixed;
+
+            top: 20px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: calc(100% - 60px);
+            max-width: 1200px;
+
+            padding: 13px 22px;
+
+            background: var(--nav-bg);
+
+            backdrop-filter: blur(18px);
+
+            border: 1px solid var(--accent-soft);
+
+            border-radius: 50px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            z-index: 1000;
+
+            box-shadow:
+                0 10px 35px var(--shadow);
+        }
+
+
+        .logo {
+            color: var(--accent);
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            letter-spacing: 4px;
+        }
+
+
+        .nav-menu {
+            display: flex;
+
+            align-items: center;
+
+            list-style: none;
+
+            gap: 22px;
+        }
+
+
+        .nav-menu a {
+            color: var(--text-main);
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            transition: 0.3s;
+        }
+
+
+        .nav-menu a:hover {
+            color: var(--accent);
+        }
+
+
+        /* =====================================================
+           THEME BUTTON
+        ===================================================== */
+
+        .theme-btn {
+            border: 1px solid var(--accent-soft);
+
+            background: transparent;
+
+            color: var(--text-main);
+
+            padding: 8px 16px;
+
+            border-radius: 30px;
+
+            cursor: pointer;
+
+            font-family: inherit;
+
+            font-size: 12px;
+
+            transition: 0.3s;
+        }
+
+
+        .theme-btn:hover {
+            background: var(--accent-soft);
+        }
+
+
+        /* =====================================================
+           MOBILE MENU
+        ===================================================== */
+
+        .menu-toggle {
+            display: none;
+
+            border: none;
+
+            background: transparent;
+
+            color: var(--text-main);
+
+            font-size: 25px;
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           SIDE NAVIGATION ARROWS
+        ===================================================== */
+
+        .slide-arrow {
+            position: absolute;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            width: 54px;
+            height: 54px;
+
+            border-radius: 50%;
+
+            border: 1px solid var(--accent-soft);
+
+            background: var(--bg-card);
+
+            color: var(--accent);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            text-decoration: none;
+
+            font-size: 28px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            z-index: 100;
+
+            backdrop-filter: blur(10px);
+        }
+
+
+        .slide-arrow:hover {
+            background: var(--accent-soft);
+
+            transform:
+                translateY(-50%)
+                scale(1.08);
+        }
+
+
+        .slide-arrow.left {
+            left: 25px;
+        }
+
+
+        .slide-arrow.right {
+            right: 25px;
+        }
+
+
+        /* =====================================================
+           SECTION TITLE
+        ===================================================== */
+
+        .section-title {
+            color: var(--accent);
+
+            font-size: 42px;
+
+            text-align: center;
+
+            margin-bottom: 35px;
+
+            flex-shrink: 0;
+        }
+
+
+        /* =====================================================
+           HOME
+        ===================================================== */
+
+        #home {
+            flex-direction: row;
+
+            align-items: center;
+            justify-content: center;
+
+            /* DIUBAH: foto dan tulisan lebih dekat */
+            gap: 10px;
+        }
+
+
+      .hero-image {
+            width: 480px;
+            height: 620px;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            background: transparent;
+
+            border: none;
+
+            box-shadow: none;
+
+            overflow: visible;
+
+            flex-shrink: 0;
+        }
+
+
+        .hero-image img {
+            width: 125%;
+            height: 125%;
+
+            object-fit: contain;
+
+            display: block;
+
+            transform: translateY(35px);
+        }
+
+
+        .hero-text {
+            max-width: 500px;
+
+            margin-left: 0;
+        }
+
+
+        .hero-text h1 {
+            font-size: 58px;
+
+            line-height: 1.1;
+
+            margin-bottom: 20px;
+        }
+
+
+        .hero-text h1 span {
+            color: var(--accent);
+        }
+
+
+        .hero-text p {
+            color: var(--text-soft);
+
+            font-size: 20px;
+        }
+
+
+        /* =====================================================
+           ABOUT
+        ===================================================== */
+
+        #about {
+            justify-content: flex-start;
+        }
+
+
+        .about-container {
+            width: 100%;
+
+            max-width: 1150px;
+
+            display: flex;
+
+            align-items: flex-start;
+            justify-content: center;
+
+            gap: 50px;
+
+            margin: 0 auto;
+
+            flex: 1;
+
+            min-height: 0;
+
+            overflow-y: auto;
+            overflow-x: hidden;
+
+            padding:
+                5px
+                15px
+                40px;
+
+            -webkit-overflow-scrolling: touch;
+
+            scrollbar-width: thin;
+        }
+
+
+        .formal-photo {
+            /* DIUBAH: foto merah sedikit dikecilkan */
+            width: 235px;
+            height: 305px;
+
+            flex-shrink: 0;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            border: 1px solid var(--accent-soft);
+
+            box-shadow:
+                0 15px 40px var(--shadow);
+
+            position: sticky;
+
+            top: 5px;
+        }
+
+
+        .formal-photo img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+
+        .about-content {
+            width: 100%;
+
+            max-width: 780px;
+
+            flex-shrink: 0;
+        }
+
+
+        .about-description {
+            background: var(--bg-card);
+
+            border: 1px solid var(--accent-soft);
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            color: var(--text-soft);
+
+            line-height: 1.7;
+
+            margin-bottom: 22px;
+
+            transform-origin: center;
+
+            transition:
+                transform 0.3s ease;
+
+            box-shadow:
+                0 10px 30px var(--shadow);
+        }
+
+
+        .zoom-controls {
+            display: flex;
+
+            justify-content: flex-end;
+
+            gap: 8px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .zoom-controls button {
+            width: 35px;
+            height: 35px;
+
+            border-radius: 50%;
+
+            border: 1px solid var(--accent-soft);
+
+            background: var(--bg-card);
+
+            color: var(--accent);
+
+            font-size: 20px;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .zoom-controls button:hover {
+            background: var(--accent-soft);
+        }
+
+
+        .info-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 12px;
+        }
+
+
+        .info-card {
+            padding: 16px;
+
+            background: var(--bg-card);
+
+            border: 1px solid var(--accent-soft);
+
+            border-radius: 15px;
+
+            line-height: 1.5;
+
+            transition: 0.3s;
+        }
+
+
+        .info-card:hover {
+            transform: translateY(-4px);
+        }
+
+
+        .info-card strong {
+            display: block;
+
+            color: var(--accent);
+
+            margin-bottom: 4px;
+        }
+
+
+        /* =====================================================
+           SKILLS
+        ===================================================== */
+
+        .skills-container {
+            width: 100%;
+
+            max-width: 1000px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 25px;
+
+            margin: 0 auto;
+        }
+
+
+        .skill-card {
+            min-height: 220px;
+
+            padding: 40px 30px;
+
+            background: var(--bg-card);
+
+            border: 1px solid var(--accent-soft);
+
+            border-radius: 20px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            transition: 0.3s;
+        }
+
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 15px 35px var(--shadow);
+        }
+
+
+        .skill-card h3 {
+            color: var(--accent);
+
+            font-size: 25px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .skill-card p {
+            color: var(--text-soft);
+
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           PROJECTS
+        ===================================================== */
+
+        #projects {
+            justify-content: center;
+        }
+
+
+        .project-slider {
+            position: relative;
+
+            width: 100%;
+
+            max-width: 1100px;
+
+            height: 410px;
+
+            margin: 0 auto;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+        }
+
+
+        .project-track {
+            position: relative;
+
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            transform: none !important;
+        }
+
+
+        .project-card {
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            width: 180px;
+            height: 285px;
+
+            margin: 0;
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            border: 1px solid var(--accent-soft);
+
+            box-shadow:
+                0 15px 35px var(--shadow);
+
+            opacity: 0;
+
+            transform:
+                translate(-50%, -50%)
+                scale(0.65);
+
+            transition:
+                transform 0.6s ease,
+                opacity 0.6s ease;
+
+            pointer-events: none;
+
+            z-index: 1;
+        }
+
+
+        .project-card.active {
+            width: 270px;
+            height: 380px;
+
+            opacity: 1;
+
+            transform:
+                translate(-50%, -50%)
+                scale(1);
+
+            border-color: var(--accent);
+
+            z-index: 5;
+        }
+
+
+        .project-card.prev {
+            opacity: 0.45;
+
+            transform:
+                translate(
+                    calc(-50% - 245px),
+                    -50%
+                )
+                scale(0.78);
+
+            z-index: 3;
+        }
+
+
+        .project-card.next {
+            opacity: 0.45;
+
+            transform:
+                translate(
+                    calc(-50% + 245px),
+                    -50%
+                )
+                scale(0.78);
+
+            z-index: 3;
+        }
+
+
+        .project-card.far-prev {
+            opacity: 0.18;
+
+            transform:
+                translate(
+                    calc(-50% - 420px),
+                    -50%
+                )
+                scale(0.60);
+
+            z-index: 1;
+        }
+
+
+        .project-card.far-next {
+            opacity: 0.18;
+
+            transform:
+                translate(
+                    calc(-50% + 420px),
+                    -50%
+                )
+                scale(0.60);
+
+            z-index: 1;
+        }
+
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+
+        .project-arrow {
+            position: absolute;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            width: 50px;
+            height: 50px;
+
+            border-radius: 50%;
+
+            border: 1px solid var(--accent-soft);
+
+            background: var(--bg-card);
+
+            color: var(--accent);
+
+            font-size: 27px;
+
+            cursor: pointer;
+
+            z-index: 20;
+
+            backdrop-filter: blur(10px);
+
+            transition: 0.3s;
+        }
+
+
+        .project-arrow:hover {
+            background: var(--accent-soft);
+
+            transform:
+                translateY(-50%)
+                scale(1.1);
+        }
+
+
+        .project-arrow.left {
+            left: 15px;
+        }
+
+
+        .project-arrow.right {
+            right: 15px;
+        }
+
+
+        /* =====================================================
+           ACHIEVEMENT
+        ===================================================== */
+
+        #achievement {
+            justify-content: center;
+        }
+
+
+        .achievement-wrapper {
+            width: 100%;
+
+            max-width: 1000px;
+
+            margin: 0 auto;
+        }
+
+
+        .achievement-wrapper
+        .zoom-controls {
+            margin-bottom: 20px;
+        }
+
+
+        .achievement-container {
+            width: 100%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 25px;
+
+            transform-origin: center;
+
+            transition:
+                transform 0.3s ease;
+        }
+
+
+        .achievement-card {
+            width: 280px;
+            height: 300px;
+
+            flex-shrink: 0;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            border: 1px solid var(--accent-soft);
+
+            box-shadow:
+                0 15px 40px var(--shadow);
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
+        }
+
+
+        .achievement-card:hover {
+            transform: scale(1.08);
+
+            box-shadow:
+                0 20px 50px var(--shadow);
+
+            z-index: 10;
+        }
+
+
+        .achievement-card img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+
+        /* =====================================================
+           CONTACT
+        ===================================================== */
+
+        #contact {
+            justify-content: center;
+        }
+
+
+        .contact-container {
+            width: 100%;
+
+            max-width: 700px;
+
+            margin: 0 auto;
+        }
+
+
+        .contact-card {
+            width: 100%;
+
+            background: var(--bg-card);
+
+            border: 1px solid var(--accent-soft);
+
+            border-radius: 20px;
+
+            padding: 30px;
+
+            box-shadow:
+                0 15px 35px var(--shadow);
+        }
+
+
+        .contact-item {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 17px 0;
+
+            border-bottom:
+                1px solid var(--accent-soft);
+
+            gap: 20px;
+        }
+
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+
+        .contact-item span {
+            color: var(--accent);
+
+            font-weight: bold;
+        }
+
+
+        .contact-item a {
+            color: var(--text-main);
+
+            text-decoration: none;
+
+            transition: 0.3s;
+        }
+
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            display: none;
+        }
+
+
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
+        @media (max-width: 1100px) {
+
+            section {
+                padding-left: 75px;
+                padding-right: 75px;
+            }
+
+
+            .hero-image {
+                /* DIUBAH */
+                width: 350px;
+                height: 455px;
+            }
+
+
+            .hero-text h1 {
+                font-size: 48px;
+            }
+
+
+            .about-container {
+                gap: 30px;
+            }
+
+
+            .formal-photo {
+                /* DIUBAH */
+                width: 210px;
+                height: 275px;
+            }
+
+
+            .about-content {
+                max-width: 650px;
+            }
+
+
+            .info-card {
+                font-size: 14px;
+            }
+
+
+            .project-card.prev {
+                transform:
+                    translate(
+                        calc(-50% - 210px),
+                        -50%
+                    )
+                    scale(0.72);
+            }
+
+
+            .project-card.next {
+                transform:
+                    translate(
+                        calc(-50% + 210px),
+                        -50%
+                    )
+                    scale(0.72);
+            }
+
+
+            .project-card.far-prev {
+                transform:
+                    translate(
+                        calc(-50% - 360px),
+                        -50%
+                    )
+                    scale(0.55);
+            }
+
+
+            .project-card.far-next {
+                transform:
+                    translate(
+                        calc(-50% + 360px),
+                        -50%
+                    )
+                    scale(0.55);
+            }
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .navbar {
+                width: calc(100% - 30px);
+
+                top: 15px;
+
+                border-radius: 20px;
+            }
+
+
+            .nav-menu {
+                display: none;
+
+                position: absolute;
+
+                top: 65px;
+                left: 0;
+
+                width: 100%;
+
+                background:
+                    var(--bg-secondary);
+
+                border:
+                    1px solid var(--accent-soft);
+
+                border-radius: 20px;
+
+                padding: 20px;
+
+                flex-direction: column;
+
+                text-align: center;
+
+                gap: 18px;
+            }
+
+
+            .nav-menu.show {
+                display: flex;
+            }
+
+
+            .menu-toggle {
+                display: block;
+            }
+
+
+            .theme-btn {
+                margin-left: auto;
+
+                margin-right: 10px;
+            }
+
+
+            section {
+                padding:
+                    100px
+                    55px
+                    50px;
+            }
+
+
+            .section-title {
+                font-size: 32px;
+
+                margin-bottom: 25px;
+            }
+
+
+            /* HOME */
+
+            #home {
+                flex-direction: column;
+
+                gap: 25px;
+
+                text-align: center;
+            }
+
+
+            .hero-image {
+                width: 200px;
+                height: 260px;
+            }
+
+
+            .hero-text h1 {
+                font-size: 40px;
+            }
+
+
+            .hero-text p {
+                font-size: 17px;
+            }
+
+
+            /* ARROWS */
+
+            .slide-arrow {
+                width: 43px;
+                height: 43px;
+
+                font-size: 23px;
+            }
+
+
+            .slide-arrow.left {
+                left: 10px;
+            }
+
+
+            .slide-arrow.right {
+                right: 10px;
+            }
+
+
+            /* ABOUT */
+
+            #about {
+                justify-content: flex-start;
+
+                overflow: hidden;
+            }
+
+
+            #about .section-title {
+                flex-shrink: 0;
+
+                margin-top: 0;
+
+                margin-bottom: 15px;
+
+                position: relative;
+
+                z-index: 5;
+            }
+
+
+            .about-container {
+                flex-direction: column;
+
+                gap: 15px;
+
+                width: 100%;
+
+                max-width: none;
+
+                flex: 1;
+
+                min-height: 0;
+
+                height: auto;
+
+                overflow-y: auto;
+
+                overflow-x: hidden;
+
+                padding:
+                    5px
+                    10px
+                    40px;
+
+                justify-content: flex-start;
+
+                align-items: center;
+
+                -webkit-overflow-scrolling: touch;
+
+                scrollbar-width: thin;
+            }
+
+
+            .formal-photo {
+                width: 150px;
+                height: 195px;
+
+                flex-shrink: 0;
+
+                position: relative;
+
+                top: auto;
+            }
+
+
+            .about-content {
+                width: 100%;
+
+                max-width: 100%;
+
+                flex-shrink: 0;
+            }
+
+
+            .about-description {
+                font-size: 13px;
+
+                padding: 18px;
+
+                line-height: 1.5;
+            }
+
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            /* SKILLS */
+
+            .skills-container {
+                grid-template-columns: 1fr;
+
+                gap: 12px;
+
+                max-height:
+                    calc(100vh - 180px);
+
+                overflow-y: auto;
+            }
+
+
+            .skill-card {
+                min-height: 130px;
+
+                padding: 20px;
+            }
+
+
+            /* PROJECTS */
+
+            .project-slider {
+                height: 340px;
+            }
+
+
+            .project-card {
+                width: 110px;
+                height: 180px;
+            }
+
+
+            .project-card.active {
+                width: 205px;
+                height: 290px;
+            }
+
+
+            .project-card.prev {
+                transform:
+                    translate(
+                        calc(-50% - 125px),
+                        -50%
+                    )
+                    scale(0.62);
+            }
+
+
+            .project-card.next {
+                transform:
+                    translate(
+                        calc(-50% + 125px),
+                        -50%
+                    )
+                    scale(0.62);
+            }
+
+
+            .project-card.far-prev,
+            .project-card.far-next {
+                opacity: 0;
+            }
+
+
+            .project-arrow {
+                width: 43px;
+                height: 43px;
+            }
+
+
+            /* ACHIEVEMENT */
+
+            .achievement-container {
+                overflow-x: auto;
+
+                justify-content: flex-start;
+
+                padding:
+                    20px 5px;
+            }
+
+
+            .achievement-card {
+                width: 190px;
+                height: 220px;
+            }
+
+
+            .achievement-card:hover {
+                transform: scale(1.05);
+            }
+
+
+            /* CONTACT */
+
+            .contact-card {
+                padding: 20px;
+            }
+
+
+            .contact-item {
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 5px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ===================================================== -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            ARIN
+        </div>
+
+
+        <ul class="nav-menu" id="navMenu">
+
+            <li>
+                <a
+                    href="#"
+                    onclick="goToSlide(0); return false;">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="#"
+                    onclick="goToSlide(1); return false;">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="#"
+                    onclick="goToSlide(2); return false;">
+                    Skills
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="#"
+                    onclick="goToSlide(3); return false;">
+                    Projects
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="#"
+                    onclick="goToSlide(4); return false;">
+                    Achievement
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="#"
+                    onclick="goToSlide(5); return false;">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+
+        <button
+            class="theme-btn"
+            id="themeButton"
+            onclick="changeTheme()">
+
+            ♡ LADIES
+
+        </button>
+
+
+        <button
+            class="menu-toggle"
+            onclick="toggleMenu()">
+
+            ☰
+
+        </button>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         SLIDES
+    ===================================================== -->
+
+    <div
+        class="slides"
+        id="slides">
+
+
+        <!-- =================================================
+             HOME
+        ================================================= -->
+
+        <section id="home">
+
+            <div class="hero-image">
+
+                <img
+                    src="fotononformal.png"
+                    alt="Foto Arin">
+
+            </div>
+
+
+            <div class="hero-text">
+
+                <h1>
+                    Aku <span>Arin.</span>
+                </h1>
+
+                <p>
+                    Ayo mulai kenal aku lebih jauh.
+                </p>
+
+            </div>
+
+
+            <a
+                href="#"
+                onclick="goToSlide(1); return false;"
+                class="slide-arrow right">
+
+                →
+
+            </a>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ABOUT
+        ================================================= -->
+
+        <section id="about">
+
+            <h2 class="section-title">
+                About Me
+            </h2>
+
+
+            <div class="about-container">
+
+
+                <div class="formal-photo">
+                    <img
+
+                        src="fotoformal.jpeg"
+                        alt="Foto Formal Arin">
+
+                </div>
+
+
+                <div class="about-content">
+
+
+                    <div class="zoom-controls">
+
+                        <button onclick="zoomAbout(-0.05)">
+                            −
+                        </button>
+
+                        <button onclick="zoomAbout(0.05)">
+                            +
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        class="about-description"
+                        id="aboutDescription">
+
+                        Arindi adalah Mahasiswa Sistem Informasi
+                        yang memiliki semangat belajar tinggi, teliti,
+                        dan adaptif dalam mempelajari hal-hal baru.
+                        Memiliki kemampuan analitis dan ketertarikan
+                        pada pengolahan data serta teknologi informasi.
+                        Terbiasa menyelesaikan tugas secara sistematis,
+                        memperhatikan detail, dan berusaha memahami
+                        suatu permasalahan secara mendalam sebelum
+                        menentukan solusi.
+
+                    </div>
+
+
+                    <div class="info-grid">
+
+
+                        <div class="info-card">
+
+                            <strong>
+                                Nama
+                            </strong>
+
+                            Arindi Zahrotus Sita
+
+                        </div>
+
+
+                        <div class="info-card">
+
+                            <strong>
+                                NIM
+                            </strong>
+
+                            26051214087
+
+                        </div>
+
+
+                        <div class="info-card">
+
+                            <strong>
+                                Program Studi
+                            </strong>
+
+                            S1 Sistem Informasi
+
+                        </div>
+
+
+                        <div class="info-card">
+
+                            <strong>
+                                Pendidikan Terakhir
+                            </strong>
+
+                            SMK Negeri 2 Probolinggo —
+                            Teknik Komputer dan Jaringan
+
+                        </div>
+
+
+                        <div class="info-card">
+
+                            <strong>
+                                Pengalaman
+                            </strong>
+
+                            PKL di Diskominfo Kota Probolinggo,
+                            dokumentasi, publikasi, laporan panggilan
+                            darurat, perawatan jaringan, dan
+                            perancangan project Suroyo Cokro Koridor.
+
+                        </div>
+
+
+                        <div class="info-card">
+
+                            <strong>
+                                Aktivitas
+                            </strong>
+
+                            Workout, design, menonton film horor,
+                            Nadia Omara, bermain game, dan menyanyi.
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <a
+                href="#"
+                onclick="goToSlide(0); return false;"
+                class="slide-arrow left">
+
+                ←
+
+            </a>
+
+
+            <a
+                href="#"
+                onclick="goToSlide(2); return false;"
+                class="slide-arrow right">
+
+                →
+
+            </a>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SKILLS
+        ================================================= -->
+
+        <section id="skills">
+
+            <h2 class="section-title">
+                My Skills
+            </h2>
+
+
+            <div class="skills-container">
+
+
+                <div class="skill-card">
+
+                    <h3>
+                        Design
+                    </h3>
+
+                    <p>
+                        Memiliki kemampuan dalam desain visual,
+                        Canva, pembuatan konten kreatif,
+                        dan penyusunan visual yang menarik.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <h3>
+                        Programming
+                    </h3>
+
+                    <p>
+                        Memahami dasar pemrograman Python
+                        dan sedang mengembangkan kemampuan
+                        pemrograman secara bertahap.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <h3>
+                        Data
+                    </h3>
+
+                    <p>
+                        Memahami dasar pengolahan data
+                        dan sedang mempelajari analisis
+                        data secara lebih mendalam.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <a
+                href="#"
+                onclick="goToSlide(1); return false;"
+                class="slide-arrow left">
+
+                ←
+
+            </a>
+
+
+            <a
+                href="#"
+                onclick="goToSlide(3); return false;"
+                class="slide-arrow right">
+
+                →
+
+            </a>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PROJECTS
+        ================================================= -->
+
+        <section id="projects">
+
+            <h2 class="section-title">
+                My Projects
+            </h2>
+
+
+            <div class="project-slider">
+
+
+                <button
+                    class="project-arrow left"
+                    onclick="previousProject()">
+
+                    ←
+
+                </button>
+
+
+                <div
+                    class="project-track"
+                    id="projectTrack">
+
+
+                    <div class="project-card">
+
+                        <img
+                            src="proyek1.jpeg"
+                            alt="Project Design 1">
+
+                    </div>
+
+
+                    <div class="project-card">
+
+                        <img
+                            src="proyek2.jpeg"
+                            alt="Project Design 2">
+
+                    </div>
+
+
+                    <div class="project-card">
+
+                        <img
+                            src="proyek3.jpeg"
+                            alt="Project Design 3">
+
+                    </div>
+
+
+                    <div class="project-card">
+
+                        <img
+                            src="proyek4.jpeg"
+                            alt="Project Design 4">
+
+                    </div>
+
+
+                    <div class="project-card">
+
+                        <img
+                            src="proyek5.jpeg"
+                            alt="Project Design 5">
+
+                    </div>
+
+
+                </div>
+
+
+                <button
+                    class="project-arrow right"
+                    onclick="nextProject()">
+
+                    →
+
+                </button>
+
+
+            </div>
+
+
+            <a
+                href="#"
+                onclick="goToSlide(2); return false;"
+                class="slide-arrow left">
+
+                ←
+
+            </a>
+
+
+            <a
+                href="#"
+                onclick="goToSlide(4); return false;"
+                class="slide-arrow right">
+
+                →
+
+            </a>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ACHIEVEMENT
+        ================================================= -->
+
+        <section id="achievement">
+
+            <h2 class="section-title">
+                Achievement & Organization
+            </h2>
+
+
+            <div class="achievement-wrapper">
+
+
+                <div class="zoom-controls">
+
+                    <button onclick="zoomAchievement(-0.05)">
+                        −
+                    </button>
+
+                    <button onclick="zoomAchievement(0.05)">
+                        +
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="achievement-container"
+                    id="achievementContainer">
+
+
+                    <div class="achievement-card">
+
+                        <img
+                            src="achievement1.jpeg"
+                            alt="Achievement 1">
+
+                    </div>
+
+
+                    <div class="achievement-card">
+
+                        <img
+                            src="achievement2.jpeg"
+                            alt="Achievement 2">
+
+                    </div>
+
+
+                    <div class="achievement-card">
+
+                        <img
+                            src="organization.jpeg"
+                            alt="Organization">
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <a
+                href="#"
+                onclick="goToSlide(3); return false;"
+                class="slide-arrow left">
+
+                ←
+
+            </a>
+
+
+            <a
+                href="#"
+                onclick="goToSlide(5); return false;"
+                class="slide-arrow right">
+
+                →
+
+            </a>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CONTACT
+        ================================================= -->
+
+        <section id="contact">
+
+            <h2 class="section-title">
+                Contact Me
+            </h2>
+
+
+            <div class="contact-container">
+
+
+                <div class="contact-card">
+
+
+                    <div class="contact-item">
+
+                        <span>
+                            Email
+                        </span>
+
+                        <a
+                            href="mailto:zahrotussarindi@gmail.com">
+
+                            zahrotussarindi@gmail.com
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <span>
+                            Phone
+                        </span>
+
+                        <a
+                            href="tel:085235715120">
+
+                            085235715120
+
+                        </a>
+
+                    </div>
+
+
+                   <div class="contact-item">
+
+                        <span>
+                            LinkedIn
+                        </span>
+
+                        <a
+                            href="https://www.linkedin.com/in/arindi-zahrotus-161379441/"
+                            target="_blank">
+
+                            Arindi Zahrotus
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <span>
+                            Instagram
+                        </span>
+
+                        <a
+                            href="https://instagram.com/miindj"
+                            target="_blank">
+
+                            @miindj
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <span>
+                            GitHub
+                        </span>
+
+                        <a
+                            href="#"
+                            target="_blank">
+
+                            GitHub
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <span>
+                            CV
+                        </span>
+
+                        <a
+                            href="https://drive.google.com/file/d/174rH6xZP8WylxqNnlC9ik2o6q2zGhP0P/view?usp=drivesdk"
+                            target="_blank">
+
+                            Lihat CV
+
+                        </a>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <a
+                href="#"
+                onclick="goToSlide(4); return false;"
+                class="slide-arrow left">
+
+                ←
+
+            </a>
+
+
+            <a
+                href="#"
+                onclick="goToSlide(0); return false;"
+                class="slide-arrow right">
+
+                ↻
+
+            </a>
+
+        </section>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+        /* =====================================================
+           SLIDE
+        ===================================================== */
+
+        let currentSlide = 0;
+
+        const totalSlides = 6;
+
+        const slides =
+            document.getElementById("slides");
+
+
+        function goToSlide(index) {
+
+            if (index < 0) {
+                index = 0;
+            }
+
+            if (index >= totalSlides) {
+                index = totalSlides - 1;
+            }
+
+            currentSlide = index;
+
+            slides.style.transform =
+                `translateX(-${currentSlide * 100}vw)`;
+
+        }
+
+
+        /* =====================================================
+           KEYBOARD
+        ===================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "ArrowRight") {
+
+                    goToSlide(
+                        currentSlide + 1
+                    );
+
+                }
+
+
+                if (event.key === "ArrowLeft") {
+
+                    goToSlide(
+                        currentSlide - 1
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           THEME
+        ===================================================== */
+
+        const themeButton =
+            document.getElementById("themeButton");
+
+
+        function changeTheme() {
+
+            document.body.classList.toggle(
+                "man-theme"
+            );
+
+
+            if (
+                document.body.classList.contains(
+                    "man-theme"
+                )
+            ) {
+
+                themeButton.innerHTML =
+                    "◇ GENTLEMAN";
+
+
+                localStorage.setItem(
+                    "portfolioTheme",
+                    "man"
+                );
+
+            } else {
+
+                themeButton.innerHTML =
+                    "♡ LADIES";
+
+
+                localStorage.setItem(
+                    "portfolioTheme",
+                    "ladies"
+                );
+
+            }
+
+        }
+
+
+        const savedTheme =
+            localStorage.getItem(
+                "portfolioTheme"
+            );
+
+
+        if (savedTheme === "man") {
+
+            document.body.classList.add(
+                "man-theme"
+            );
+
+            themeButton.innerHTML =
+                "◇ GENTLEMAN";
+
+        } else {
+
+            themeButton.innerHTML =
+                "♡ LADIES";
+
+        }
+
+
+        /* =====================================================
+           MOBILE MENU
+        ===================================================== */
+
+        function toggleMenu() {
+
+            const menu =
+                document.getElementById(
+                    "navMenu"
+                );
+
+            menu.classList.toggle(
+                "show"
+            );
+
+        }
+
+
+        document
+            .querySelectorAll(".nav-menu a")
+            .forEach(function(link) {
+
+                link.addEventListener(
+                    "click",
+                    function() {
+
+                        document
+                            .getElementById(
+                                "navMenu"
+                            )
+                            .classList.remove(
+                                "show"
+                            );
+
+                    }
+                );
+
+            });
+
+
+        /* =====================================================
+           ABOUT ZOOM
+        ===================================================== */
+
+        let aboutZoom = 1;
+
+
+        function zoomAbout(amount) {
+
+            aboutZoom += amount;
+
+
+            if (aboutZoom < 0.8) {
+                aboutZoom = 0.8;
+            }
+
+
+            if (aboutZoom > 1.5) {
+                aboutZoom = 1.5;
+            }
+
+
+            document
+                .getElementById(
+                    "aboutDescription"
+                )
+                .style.transform =
+                `scale(${aboutZoom})`;
+
+        }
+
+
+        /* =====================================================
+           ACHIEVEMENT ZOOM
+        ===================================================== */
+
+        let achievementZoom = 1;
+
+
+        function zoomAchievement(amount) {
+
+            achievementZoom += amount;
+
+
+            if (achievementZoom < 0.7) {
+                achievementZoom = 0.7;
+            }
+
+
+            if (achievementZoom > 1.5) {
+                achievementZoom = 1.5;
+            }
+
+
+            document
+                .getElementById(
+                    "achievementContainer"
+                )
+                .style.transform =
+                `scale(${achievementZoom})`;
+
+        }
+
+
+        /* =====================================================
+           PROJECT ROLL FILM
+        ===================================================== */
+
+        const projectCards =
+            document.querySelectorAll(
+                ".project-card"
+            );
+
+
+        let currentProject = 0;
+
+
+        function updateProjects() {
+
+            const totalProjects =
+                projectCards.length;
+
+
+            projectCards.forEach(
+                function(card, index) {
+
+                    card.classList.remove(
+                        "active",
+                        "prev",
+                        "next",
+                        "far-prev",
+                        "far-next"
+                    );
+
+
+                    if (
+                        index === currentProject
+                    ) {
+
+                        card.classList.add(
+                            "active"
+                        );
+
+                    }
+
+
+                    else if (
+                        index ===
+                        (currentProject + 1) %
+                        totalProjects
+                    ) {
+
+                        card.classList.add(
+                            "next"
+                        );
+
+                    }
+
+
+                    else if (
+                        index ===
+                        (currentProject - 1 +
+                        totalProjects) %
+                        totalProjects
+                    ) {
+
+                        card.classList.add(
+                            "prev"
+                        );
+
+                    }
+
+
+                    else if (
+                        index ===
+                        (currentProject + 2) %
+                        totalProjects
+                    ) {
+
+                        card.classList.add(
+                            "far-next"
+                        );
+
+                    }
+
+
+                    else if (
+                        index ===
+                        (currentProject - 2 +
+                        totalProjects) %
+                        totalProjects
+                    ) {
+
+                        card.classList.add(
+                            "far-prev"
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        function nextProject() {
+
+            currentProject++;
+
+            if (
+                currentProject >=
+                projectCards.length
+            ) {
+
+                currentProject = 0;
+
+            }
+
+            updateProjects();
+
+        }
+
+
+        function previousProject() {
+
+            currentProject--;
+
+            if (
+                currentProject < 0
+            ) {
+
+                currentProject =
+                    projectCards.length - 1;
+
+            }
+
+            updateProjects();
+
+        }
+
+
+        updateProjects();
+
+
+        /* =====================================================
+           TOUCH / SWIPE
+        ===================================================== */
+
+        let touchStartX = 0;
+
+
+        document.addEventListener(
+            "touchstart",
+            function(event) {
+
+                touchStartX =
+                    event.touches[0].clientX;
+
+            }
+        );
+
+
+        document.addEventListener(
+            "touchend",
+            function(event) {
+
+                const touchEndX =
+                    event.changedTouches[0].clientX;
+
+
+                const difference =
+                    touchStartX - touchEndX;
+
+
+                if (
+                    Math.abs(difference) < 50
+                ) {
+                    return;
+                }
+
+
+                if (
+                    currentSlide === 3
+                ) {
+
+                    if (difference > 0) {
+
+                        nextProject();
+
+                    } else {
+
+                        previousProject();
+
+                    }
+
+                } else {
+
+                    if (difference > 0) {
+
+                        goToSlide(
+                            currentSlide + 1
+                        );
+
+                    } else {
+
+                        goToSlide(
+                            currentSlide - 1
+                        );
+
+                    }
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>
